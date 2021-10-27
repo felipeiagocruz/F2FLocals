@@ -1,0 +1,54 @@
+<% layout('/layouts/boilerplate') %>
+    <div class="col-6 offset-3">
+        <h1 class="text-enter">Novo local de captação:</h1>
+        <div class="card shadow">
+            <div class="card-body">
+                <form action="/f2flocal/<%= local._id %>?_method=PUT" method="POST" novalidate class="needs-validation"
+                    enctype="multipart/form-data">
+                    <div class='mb-3'>
+                        <label class='form-label' for="nome">Nome:</label><br>
+                        <input class='form-control' type="text" name="local[nome]" id="nome" value="<%= local.nome %>"
+                            required>
+                    </div>
+                    <div class='mb-3'>
+                        <label class='form-label' for="descricao">Descrição</label><br>
+                        <textarea class='form-control' type="text" name="local[descricao]"
+                            id="descricao"><%= local.descricao %></textarea>
+                    </div>
+                    <div class='mb-3'>
+                        <label class='form-label' for="imagem">Adicionar imagem:</label><br>
+                        <input class='form-control' type="file" name="image" id="image" multiple
+                            value="<%= local.imagem %>">
+                    </div>
+                    <div class='mb-3'>
+                        <label class='form-label' for="endereco">Endereço:</label><br>
+                        <input class='form-control' type="text" name="local[endereco]" id="endereco"
+                            value="<%= local.endereco %>" required>
+                    </div>
+                    <div class='mb-3'>
+                        <label class='form-label' for="doadores">Doadores:</label><br>
+                        <input class='form-control' type="text" name="local[doadores]" id="doadores"
+                            value="<%= local.doadores %>" required>
+                    </div>
+
+                    <div class='mb-3'>
+                        <% local.imagem.forEach(function(img,i) { %>
+                            <img src="<%= img.thumbnail %>" class="img-thumbnail">
+                            <div class="form-check-inline">
+                                <input type="checkbox" id="image-<%=img.i%>" name="deleteImages[]"
+                                    value="<%=img.filename%>">
+                                <label for="image-<%=img.i%>">Deletar?</label>
+                            </div>
+
+                            <% }) %>
+                    </div>
+
+
+                    <footer>
+                        <a class='btn btn-danger' href="/f2flocal">Voltar</a> <button class='btn btn-success'>Editar
+                            local</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>

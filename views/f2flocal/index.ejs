@@ -1,0 +1,36 @@
+<% layout('/layouts/boilerplate') %>
+    <div id="cluster-map"></div>
+    <h1>Todos os locais:</h1>
+    <a href="/f2flocal/novo">Novo local de captação</a>
+    <% for (let local of locals){ %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <% if(local.imagem.length){%>
+                        <img class="img-fluid" alt="" src="<%= local.imagem[0].url %>">
+                        <% } else{%>
+                            <img class="img-fluid" alt="" src="https://bitsofco.de/content/images/2018/12/broken-1.png">
+                            <% } %>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class='card-title'>
+                            <%= local.nome %>
+                        </h5>
+                        <p class='card-text'>
+                            <%= local.descricao %>
+                        </p>
+                        <p class="card-text">
+                            Doadores: <%= local.doadores %>
+                        </p>
+                        <a class="btn btn-primary" href="/f2flocal/<%= local.id %>">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+            <script>
+                const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+                const f2fLocals = { features: <%- JSON.stringify(locals) %>}
+            </script>
+            <script src="/clusterMap.js"></script>
