@@ -129,8 +129,8 @@ app.use((err, req, res, next) => {
 
 
 
+const port = process.env.PORT || 3000;
 
-
-app.listen(3000, (req, res) => {
-    console.log('It Worked, port 3000')
+app.listen(port, (req, res) => {
+    console.log(`Servindo na porta: ${port}`)
 })
