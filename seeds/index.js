@@ -3,7 +3,7 @@ const F2flocal = require('../models/f2flocal')
 const stations = require('./stations')
 
 //Conexão com o mongodb a partir do moonse, essas configurações são padrões e sugeridas pelo Colt.
-mongoose.connect('mongodb://localhost:27017/f2flocal', {
+mongoose.connect('', {
     useUnifiedTopology: true,
     useCreateIndex: true,
     useUnifiedTopology: true
@@ -55,15 +55,15 @@ const seedDB = async () => {
                     coordinates: [Olongitude, Olatitude]
 
                 },
-                author: "6179c21bd75ad829a88fcb89",
+                author: "6179dd2d08534500163a4849",
                 doadores: 0,
                 imagem: [
                     {
-                        url: 'https://res.cloudinary.com/dkbkcfecr/image/upload/v1635182662/f2flocal/ebs0x20vwgbct13txp7q.jpg',
+                        url: 'https://res.cloudinary.com/dkbkcfecr/image/upload/v1635262150/f2flocal/rxcytvzuh3cgwrgr206x.jpg',
                         filename: 'f2flocal/ebs0x20vwgbct13txp7q'
                     },
                     {
-                        url: 'https://res.cloudinary.com/dkbkcfecr/image/upload/v1635182662/f2flocal/gccvegxsjzrgxs1ortfm.jpg',
+                        url: 'https://res.cloudinary.com/dkbkcfecr/image/upload/v1635369629/f2flocal/matyyhzu1rstcmjetgxh.jpg',
                         filename: 'f2flocal/gccvegxsjzrgxs1ortfm'
                     }
                 ]
